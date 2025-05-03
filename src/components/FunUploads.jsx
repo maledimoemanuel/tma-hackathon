@@ -20,7 +20,7 @@ const FunUploads = () => {
   const [selectedMedia, setSelectedMedia] = useState(null);
 
   // Backend API base URL
-  const API_BASE_URL = 'http://localhost:3001';
+  const API_BASE_URL = 'https://tma-hackathon.onrender.com';
 
   // Fetching existing uploads
   useEffect(() => {
