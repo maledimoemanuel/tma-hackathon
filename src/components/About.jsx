@@ -38,30 +38,42 @@ export default function About() {
 
   const LockedContent = ({ title }) => (
     <div className="bg-gray-900/80 backdrop-blur-sm p-8 rounded-2xl border border-purple-900/50 text-center">
-      <div className="text-5xl mb-6">🔒</div>
-      <h3 className="text-2xl font-bold mb-4 text-purple-400">{title} Locked</h3>
-      <p className="text-xl text-gray-300 mb-6">
-        This content will unlock at 9:30 AM on May 15, 2025
-      </p>
-      <div className="flex justify-center gap-4 text-center font-mono mt-8">
-        <div className="countdown-item">
-          <span className="text-3xl font-bold">{timeLeft.days}</span>
-          <span className="text-sm text-gray-400">Days</span>
-        </div>
-        <div className="countdown-item">
-          <span className="text-3xl font-bold">{timeLeft.hours}</span>
-          <span className="text-sm text-gray-400">Hours</span>
-        </div>
-        <div className="countdown-item">
-          <span className="text-3xl font-bold">{timeLeft.minutes}</span>
-          <span className="text-sm text-gray-400">Minutes</span>
-        </div>
-        <div className="countdown-item">
-          <span className="text-3xl font-bold">{timeLeft.seconds}</span>
-          <span className="text-sm text-gray-400">Seconds</span>
-        </div>
-      </div>
+  <div className="text-5xl mb-6">🔒</div>
+  <h3 className="text-2xl font-bold mb-4 text-purple-400">{title} Locked</h3>
+  <p className="text-xl text-gray-300 mb-6">
+    This content will unlock at 9:30 AM on May 15, 2025
+  </p>
+  <div className="flex justify-center gap-4 text-center font-mono mt-8 flex-wrap">
+    <div className="countdown-item">
+      <span className="text-3xl font-bold">{timeLeft.days}</span>
+      <span className="text-sm text-gray-400 block">
+        <span className="hidden sm:inline">Days</span>
+        <span className="inline sm:hidden">d</span>
+      </span>
     </div>
+    <div className="countdown-item">
+      <span className="text-3xl font-bold">{timeLeft.hours}</span>
+      <span className="text-sm text-gray-400 block">
+        <span className="hidden sm:inline">Hours</span>
+        <span className="inline sm:hidden">hr</span>
+      </span>
+    </div>
+    <div className="countdown-item">
+      <span className="text-3xl font-bold">{timeLeft.minutes}</span>
+      <span className="text-sm text-gray-400 block">
+        <span className="hidden sm:inline">Minutes</span>
+        <span className="inline sm:hidden">min</span>
+      </span>
+    </div>
+    <div className="countdown-item">
+      <span className="text-3xl font-bold">{timeLeft.seconds}</span>
+      <span className="text-sm text-gray-400 block">
+        <span className="hidden sm:inline">Seconds</span>
+        <span className="inline sm:hidden">s</span>
+      </span>
+    </div>
+  </div>
+</div>
   );
 
   return (
@@ -119,27 +131,31 @@ export default function About() {
               </div>
             )}
 
-            <div className="bg-gray-900/80 backdrop-blur-sm p-8 rounded-2xl border border-purple-900/50">
-              <h3 className="text-2xl font-bold mb-4 text-orange-400">Who Should Join</h3>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { title: "Operations Managers", color: "purple" },
-                  { title: "Business Analysts", color: "orange" },
-                  { title: "Process Engineers", color: "purple" },
-                  { title: "Strategy Consultants", color: "orange" },
-                  { title: "Supply Chain Experts", color: "purple" },
-                  { title: "Entrepreneurs", color: "orange" }
-                ].map((role, index) => (
-                  <div 
-                    key={index} 
-                    className={`bg-gradient-to-br from-${role.color}-900/30 to-${role.color}-800/20 p-4 rounded-lg border border-${role.color}-800/30`}
-                  >
-                    <h4 className={`font-bold text-${role.color}-400`}>{role.title}</h4>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+<div className="bg-gray-900/80 backdrop-blur-sm p-8 rounded-2xl border border-purple-900/50">
+  <h3 className="text-2xl font-bold mb-6 text-orange-400">Who Should Join</h3>
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    {[
+      { title: "Operations Managers", color: "purple" },
+      { title: "Business Analysts", color: "orange" },
+      { title: "Process Engineers", color: "purple" },
+      { title: "Strategy Consultants", color: "orange" },
+      { title: "Supply Chain Experts", color: "purple" },
+      { title: "Entrepreneurs", color: "orange" }
+    ].map((role, index) => (
+      <div
+        key={index}
+        className={`rounded-xl p-4 border ${
+          role.color === "purple"
+            ? "border-purple-600 text-purple-400"
+            : "border-orange-400 text-orange-400"
+        }`}
+      >
+        <h4 className="font-bold text-lg text-center">{role.title}</h4>
+      </div>
+    ))}
+  </div>
+</div>
+</div>
 
           {/* Right Column */}
           <div className="space-y-8">

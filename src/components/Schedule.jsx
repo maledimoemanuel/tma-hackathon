@@ -54,26 +54,39 @@ export default function Schedule() {
               The detailed schedule will unlock at 9:00 AM on May 15, 2025
             </p>
             
-            <div className="flex justify-center gap-4 text-center font-mono mt-8">
-              <div className="countdown-item">
-                <span className="text-3xl font-bold">{timeLeft.days}</span>
-                <span className="text-sm text-gray-400">Days</span>
-              </div>
-              <div className="countdown-item">
-                <span className="text-3xl font-bold">{timeLeft.hours}</span>
-                <span className="text-sm text-gray-400">Hours</span>
-              </div>
-              <div className="countdown-item">
-                <span className="text-3xl font-bold">{timeLeft.minutes}</span>
-                <span className="text-sm text-gray-400">Minutes</span>
-              </div>
-              <div className="countdown-item">
-                <span className="text-3xl font-bold">{timeLeft.seconds}</span>
-                <span className="text-sm text-gray-400">Seconds</span>
-              </div>
-            </div>
-          </div>
-        </div>
+            <div className="flex justify-center gap-4 text-center font-mono mt-8 flex-wrap">
+            <div className="countdown-item">
+         <span className="text-3xl font-bold">{timeLeft.days}</span>
+    <span className="text-sm text-gray-400 block">
+      <span className="hidden sm:inline">Days</span>
+      <span className="inline sm:hidden">d</span>
+    </span>
+  </div>
+  <div className="countdown-item">
+    <span className="text-3xl font-bold">{timeLeft.hours}</span>
+    <span className="text-sm text-gray-400 block">
+      <span className="hidden sm:inline">Hours</span>
+      <span className="inline sm:hidden">hr</span>
+    </span>
+  </div>
+  <div className="countdown-item">
+    <span className="text-3xl font-bold">{timeLeft.minutes}</span>
+    <span className="text-sm text-gray-400 block">
+      <span className="hidden sm:inline">Minutes</span>
+      <span className="inline sm:hidden">min</span>
+    </span>
+  </div>
+  <div className="countdown-item">
+    <span className="text-3xl font-bold">{timeLeft.seconds}</span>
+    <span className="text-sm text-gray-400 block">
+      <span className="hidden sm:inline">Seconds</span>
+      <span className="inline sm:hidden">s</span>
+    </span>
+  </div>
+</div>
+</div>
+</div>
+
       </section>
     );
   }
@@ -98,32 +111,28 @@ export default function Schedule() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {/* Day 1 */}
-          <div className="bg-gray-900/80 backdrop-blur-sm p-8 rounded-2xl border border-purple-900/50">
-            <h3 className="text-2xl font-bold mb-6 text-purple-400 flex items-center">
-              <span className="bg-purple-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3">1</span>
-              Day 1: Kickoff & Hacking
-            </h3>
-            <ul className="space-y-6">
-              {[
-                { time: "09:00 AM - 09:30", title: "Opening Ceremony", desc: "Welcome address from TMA leadership, rules, judging criteria overview, problem statement" },
-                { time: "9:30 AM – 10:30 AM", title: "Team Formation / Idea Pitches", desc: "Teams assemble or pitch ideas." },
-                { time: "10:30 AM – 12:30 PM", title: "Hacking: Problem Solving 1", desc: "Work session begins" },
-                { time: "12:30 PM – 1:30 PM", title: "Lunch Break", desc: "Refuel and connect." },
-                { time: "1:30 PM – 2:30 PM", title: "Problem Solving + Mentorship", desc: "Initial business models development" },
-                { time: "2:30 PM – 2:45 PM", title: "Snack Break", desc: "Light refreshments" },
-                { time: "2:45 PM – 3:30 PM", title: "Progress Check-ins", desc: "Quick team check-ins" },
-                { time: "3:30 PM – 4:00 PM", title: "First Draft Pitches", desc: "Share initial ideas/approaches" },
-              ].map((item, index) => (
-                <li key={index} className="border-l-2 border-purple-500 pl-4">
-                  <div className="text-orange-400 font-mono text-sm">{item.time}</div>
-                  <h4 className="font-bold text-lg text-white mt-1">{item.title}</h4>
-                  <p className="text-gray-400 text-sm mt-1">{item.desc}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto">
+  {/* Day 1 */}
+  <div className="bg-gray-900/80 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-2xl border border-purple-900/50">
+    <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-purple-400 flex items-center">
+      <span className="bg-purple-500 text-white rounded-full w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center mr-2 sm:mr-3 text-sm sm:text-base">1</span>
+      Day 1: Kickoff & Hacking
+    </h3>
+    <ul className="space-y-4 sm:space-y-6">
+      {[
+        { time: "09:00 AM - 09:30", title: "Opening Ceremony", desc: "Welcome address from TMA leadership, rules, judging criteria overview, problem statement" },
+        { time: "9:30 AM – 10:30 AM", title: "Team Formation / Idea Pitches", desc: "Teams assemble or pitch ideas." },
+        // ... more items
+      ].map((item, index) => (
+        <li key={index} className="border-l-2 border-purple-500 pl-3 sm:pl-4">
+          <div className="text-orange-400 font-mono text-xs sm:text-sm">{item.time}</div>
+          <h4 className="font-bold text-base sm:text-lg text-white mt-1">{item.title}</h4>
+          <p className="text-gray-400 text-xs sm:text-sm mt-1">{item.desc}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+
 
           {/* Day 2 */}
           <div className="bg-gray-900/80 backdrop-blur-sm p-8 rounded-2xl border border-orange-900/50">
