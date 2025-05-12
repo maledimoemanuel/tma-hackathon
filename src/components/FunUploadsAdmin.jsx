@@ -170,85 +170,85 @@ const FunUploadsAdmin = () => {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-12 bg-gray-900/50 rounded-xl border border-dashed border-gray-700">
-                <p className="text-gray-400">No uploads yet. Be the first to share!</p>
-              </div>
-            )}
-          </>
-        )}
+            <div className="text-center py-12 bg-gray-900/50 rounded-xl border border-dashed border-gray-700">
+              <p className="text-gray-400">No uploads yet. Be the first to share!</p>
+            </div>
+          )}
+      </>
+    )}
 
-        {/* Upload Modal */}
-        <Modal
-          isOpen={isModalOpen}
-          onRequestClose={() => setIsModalOpen(false)}
-          className="bg-gray-900 rounded-xl border border-purple-900/50 max-w-md mx-auto p-6 mt-20"
-          overlayClassName="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 flex items-center justify-center"
-        >
-          <h3 className="text-2xl font-bold mb-6 text-purple-300">Share Your Fun Moment</h3>
-          
-          <form onSubmit={handleSubmit}>
-            <div className="space-y-4">
-              <div>
-                <label className="block text-gray-300 mb-2">Your Name (Optional)</label>
-                <input
-                  type="text"
-                  value={newUpload.name}
-                  onChange={(e) => setNewUpload({...newUpload, name: e.target.value})}
-                  className="w-full bg-gray-800 border border-gray-700 rounded px-4 py-2 text-white"
-                  placeholder="Anonymous"
-                  maxLength={30}
-                />
-              </div>
-              
-              <div>
-                <label className="block text-gray-300 mb-2">Description</label>
-                <textarea
-                  value={newUpload.description}
-                  onChange={(e) => setNewUpload({...newUpload, description: e.target.value})}
-                  className="w-full bg-gray-800 border border-gray-700 rounded px-4 py-2 text-white"
-                  placeholder="What's happening in this moment?"
-                  rows={3}
-                  maxLength={200}
-                  required
-                />
-              </div>
-              
-              <div>
-                <label className="block text-gray-300 mb-2">Image or Video</label>
-                <input
-                  type="file"
-                  onChange={handleFileChange}
-                  className="w-full text-gray-300 hover:cursor-pointer bg-gray-800 border border-gray-700 rounded px-4 py-2"
-                  accept="image/*, video/*"
-                  required
-                />
-                {newUpload.previewUrl && (
-                  <div className="mt-2">
-                    {newUpload.file?.type?.startsWith('image') ? (
-                      <img src={newUpload.previewUrl} alt="Preview" className="max-h-40 rounded" />
-                    ) : (
-                      <video src={newUpload.previewUrl} controls className="max-h-40 rounded" />
+    {/* Upload Modal */}
+    <Modal
+      isOpen={isModalOpen}
+      onRequestClose={() => setIsModalOpen(false)}
+      className="bg-gray-900 rounded-xl border border-purple-900/50 max-w-md mx-auto p-6 mt-20 w-full sm:max-w-sm lg:max-w-lg xl:max-w-xl"
+      overlayClassName="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 flex items-center justify-center"
+    >
+      <h3 className="text-2xl font-bold mb-6 text-purple-300">Share Your Fun Moment</h3>
+
+      <form onSubmit={handleSubmit}>
+        <div className="space-y-4">
+          <div>
+              <label className="block text-gray-300 mb-2">Your Name (Optional)</label>
+              <input
+                type="text"
+                value={newUpload.name}
+                onChange={(e) => setNewUpload({...newUpload, name: e.target.value})}
+                className="w-full bg-gray-800 border border-gray-700 rounded px-4 py-2 text-white"
+                placeholder="Anonymous"
+                maxLength={30}
+              />
+            </div>
+
+            <div>
+              <label className="block text-gray-300 mb-2">Description</label>
+              <textarea
+                value={newUpload.description}
+                onChange={(e) => setNewUpload({...newUpload, description: e.target.value})}
+                className="w-full bg-gray-800 border border-gray-700 rounded px-4 py-2 text-white"
+                placeholder="What's happening in this moment?"
+                rows={3}
+                maxLength={200}
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block text-gray-300 mb-2">Image or Video</label>
+              <input
+                type="file"
+                onChange={handleFileChange}
+                className="w-full text-gray-300 hover:cursor-pointer bg-gray-800 border border-gray-700 rounded px-4 py-2"
+                accept="image/*, video/*"
+                required
+              />
+              {newUpload.previewUrl && (
+                <div className="mt-2">
+                  {newUpload.file?.type?.startsWith('image') ? (
+                     <img src={newUpload.previewUrl} alt="Preview" className="max-h-40 w-full object-cover rounded" />
+                   ) : (
+                      <video src={newUpload.previewUrl} controls className="max-h-40 w-full object-cover rounded" />
                     )}
-                  </div>
-                )}
-                <p className="text-xs text-gray-500 mt-1">Max 10MB. Images or videos only.</p>
-              </div>
-              
-              {error && <p className="text-red-400 text-sm">{error}</p>}
-              
-              <div className="flex justify-end space-x-4 pt-4">
-                <button
-                  type="button"
-                  onClick={() => setIsModalOpen(false)}
-                  className="px-4 py-2 border border-gray-600 rounded text-gray-300 hover:bg-gray-800 transition"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className="px-4 py-2 bg-purple-600 rounded text-white hover:bg-purple-700 transition disabled:opacity-50"
-                >
+                    </div>
+                   )}
+                   <p className="text-xs text-gray-500 mt-1">Max 10MB. Images or videos only.</p>
+                 </div>
+
+                {error && <p className="text-red-400 text-sm">{error}</p>}
+
+                <div className="sticky bottom-0 left-0 w-full bg-gray-900 py-4 px-6 flex justify-between items-center border-t border-gray-700">
+                  <button
+                    type="button"
+                    onClick={() => setIsModalOpen(false)}
+                    className="px-4 py-2 border border-gray-600 rounded text-gray-300 hover:bg-gray-800 transition"
+                  >
+                     Cancel
+                   </button>
+                   <button
+                    type="submit"
+                    disabled={isLoading}
+                    className="px-4 py-2 bg-purple-600 rounded text-white hover:bg-purple-700 transition disabled:opacity-50"
+                 >
                   {isLoading ? 'Uploading...' : 'Share'}
                 </button>
               </div>

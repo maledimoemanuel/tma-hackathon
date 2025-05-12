@@ -27,7 +27,7 @@ function App() {
         />
         {/* Fun Uploads Page */}
         <Route path="/fun-uploads" element={<FunUploads />} />
-        <Route path="/fun-uploads-admin" element={<FunUploadsAdmin />} />
+        <Route path="/fun-uploads/admin" element={<FunUploadsAdmin />} />
       </Routes>
     </Router>
   )
